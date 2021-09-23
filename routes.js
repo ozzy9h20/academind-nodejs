@@ -7,7 +7,7 @@ const routesHandler = (req, res) => {
     res.write("<h1>Hello from me!</h1>");
     res.write(`
       <form action="/create-user" method="POST">
-        <input type="text" />
+        <input type="text" name="name" />
         <button type="submit">Send</button>
       </form>
     `);
@@ -20,6 +20,22 @@ const routesHandler = (req, res) => {
     res.write(users.map((user) => `<li>${user}</li>`).join(''));
     res.write("</ul>");
     res.end();
+  }
+
+  if (url === "/create-user" && method === "POST") {
+    const body = [];
+
+    req.on('data', (chunk) => {
+      body.push(chunk);  
+    });
+
+    return req.on('end', () => {
+      const newUser = Buffer.concat(body).toString().split("=")[1];
+      console.log(newUser);
+      users.push(newUser);
+
+      return res.end();
+    });
   }
 }
 
