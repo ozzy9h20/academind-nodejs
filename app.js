@@ -18,12 +18,24 @@ const server = http.createServer((req, res) => {
   }
 
   if (url === '/message' && method === 'POST') {
+    const body = [];
+
+    req.on('data', (chunk) => {
+      console.log({ chunk }); // Data parsed chunk by chunk
+      body.push(chunk);
+    });
+
+    req.on('end', () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log({ parsedBody }); // Data all parsed
+    });
+
     fs.writeFileSync('message.txt', 'DUMMY');
     res.statusCode = 302;
     res.setHeader('Location', '/');
     return res.end();
   }
-  
+
   res.setHeader('Content-Type', 'text/html');
   res.write('<html>');
   res.write('<head><title>My First Page</title></head>');
