@@ -5,6 +5,12 @@ const routesHandler = (req, res) => {
 
   if (url === "/") {
     res.write("<h1>Hello from me!</h1>");
+    res.write(`
+      <form action="/create-user" method="POST">
+        <input type="text" />
+        <button type="submit">Send</button>
+      </form>
+    `);
     res.end();
   }
 
