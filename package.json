@@ -1,0 +1,19 @@
+{
+  "name": "academind-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozzy9h20/academind-nodejs.git"
+  },
+  "author": "Mochammad Endyarroziqin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozzy9h20/academind-nodejs/issues"
+  },
+  "homepage": "https://github.com/ozzy9h20/academind-nodejs#readme"
+}
