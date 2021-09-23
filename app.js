@@ -2,6 +2,7 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   const url = req.url;
+  const method = req.method;
 
   if (url === '/') {
     res.setHeader('Content-Type', 'text/html');
@@ -39,6 +40,24 @@ const server = http.createServer((req, res) => {
       </html>
     `);
     return res.end();
+  }
+
+  if (url === '/create-user' && method === "POST") {
+    const body = [];
+
+    req.on("data", (chunk) => {
+      body.push(chunk);
+    });
+
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log(parsedBody.split("=")[1]);
+    });
+
+    res.statusCode = 302;
+    res.setHeader('Location', '/')
+
+    res.end();
   }
 
 });
