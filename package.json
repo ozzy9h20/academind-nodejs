@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ozzy9h20/academind-nodejs/issues"
   },
-  "homepage": "https://github.com/ozzy9h20/academind-nodejs#readme"
+  "homepage": "https://github.com/ozzy9h20/academind-nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
