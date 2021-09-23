@@ -32,7 +32,8 @@ const routesHandler = (req, res) => {
     return req.on('end', () => {
       const newUser = Buffer.concat(body).toString().split("=")[1];
       console.log(newUser);
-      users.push(newUser);
+      res.statusCode = 302;
+      res.setHeader("Location", "/users");
 
       return res.end();
     });
