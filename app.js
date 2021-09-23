@@ -12,6 +12,10 @@ const server = http.createServer((req, res) => {
         </head>
         <body>
           <p>Welcome to my page!</p>
+          <form action="/create-user" method="POST">
+            <input type="text" name="username" />
+            <button type="submit">Send</button>
+          </form>
         </body>
       </html>
     `);
