@@ -11,7 +11,7 @@ const routesHandler = (req, res) => {
         <button type="submit">Send</button>
       </form>
     `);
-    res.end();
+    return res.end();
   }
 
   if (url === "/users") {
@@ -19,7 +19,7 @@ const routesHandler = (req, res) => {
     res.write("<ul>");
     res.write(users.map((user) => `<li>${user}</li>`).join(''));
     res.write("</ul>");
-    res.end();
+    return res.end();
   }
 
   if (url === "/create-user" && method === "POST") {
