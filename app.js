@@ -6,6 +6,10 @@ app.use('/', (req, res, next) => {
   next();
 });
 
+app.use('/users', (req, res, next) => {
+  res.send('Users');
+});
+
 app.use('/', (req, res, next) => {
   res.send('Test');
 });
