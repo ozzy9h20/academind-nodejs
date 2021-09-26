@@ -5,7 +5,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/add-product', (req, res, next) => {
+app.get('/add-product', (req, res, next) => {
   res.send(`
     <form action="/product" method="POST">
       <input type="text" name="title" />
@@ -13,13 +13,12 @@ app.use('/add-product', (req, res, next) => {
     </form>`);
 });
 
-app.use('/product', (req, res) => {
+app.post('/product', (req, res) => {
   console.log(req.body);
   res.redirect('/');
 })
 
-app.use('/', (req, res, next) => {
-  console.log('In another middleware');
+app.get('/', (req, res, next) => {
   res.send("<h1>Hello from Express!</h1>");
 });
 
