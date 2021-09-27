@@ -7,7 +7,11 @@ const shopRoutes = require('./routes/shop');
 
 const app = express();
 
-app.engine('handlebars', expHbs());
+app.engine('handlebars', expHbs({
+  layoutsDir: 'views/layouts/', 
+  defaultLayout: 'main-layout',
+  // extname: 'hbs',
+}));
 app.set('view engine', 'handlebars');
 app.set('views', 'views')
 
