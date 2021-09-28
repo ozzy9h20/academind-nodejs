@@ -1,0 +1,6 @@
+extends ./layouts/main-layout
+
+block body
+  form(action="/users", method="POST")
+    input(type="text", name="username")
+    button(type="submit") Send
