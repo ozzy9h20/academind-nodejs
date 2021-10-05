@@ -1,11 +1,39 @@
+<%
+  const handleClass = (p) => path === p ? "active" : "";
+%>
+
 <header class="main-header">
   <nav class="main-header__nav">
     <ul class="main-header__item-list">
       <li class="main-header__item">
-        <a href="/" class="<%= path === '/' ? 'active' : '' %>">Shop</a>
+        <a  href="/" 
+            class="<%= handleClass('/') %>">
+            Shop
+        </a>
       </li>
       <li class="main-header__item">
-        <a href="/admin/add-product" class="<%= path === '/admin/add-product' ? 'active' : '' %>">Add Product</a>
+        <a  href="/products" 
+            class="<%= handleClass('/products') %>">
+            Products
+        </a>
+      </li>
+      <li class="main-header__item">
+        <a  href="/cart" 
+            class="<%= handleClass('/cart') %>">
+            Cart
+        </a>
+      </li>
+      <li class="main-header__item">
+        <a  href="/admin/add-product" 
+            class="<%= handleClass('/admin/add-product') %>">
+            Add Product
+        </a>
+      </li>
+      <li class="main-header__item">
+        <a  href="/admin/product" 
+            class="<%= handleClass('/admin/product') %>">
+            Admin Product
+        </a>
       </li>
     </ul>
   </nav>
