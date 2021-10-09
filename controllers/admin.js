@@ -25,9 +25,10 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
 
+  
   const { productId: prodId } = req.params;
-  Product.findByPk(prodId)
-    .then(({ dataValues: product }) => {
+  req.user.getProducts({ where: { id: prodId }})
+    .then(([{ dataValues: product }]) => {
       if (!product) {
         return res.redirect("/");
       }
@@ -51,7 +52,6 @@ exports.postEditProduct = (req, res) => {
         product[key] = req.body[key];
       }
 
-      console.table(product);
       return product.save();
     })
     .then((result) => {
@@ -62,7 +62,7 @@ exports.postEditProduct = (req, res) => {
 }
 
 exports.getProducts = (req, res, next) => {
-  Product.findAll()
+  req.user.getProducts()
     .then((products) => {
       res.render("admin/products", {
         prods: products,
